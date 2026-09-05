@@ -1,3 +1,12 @@
+#Enhancement #1: After the program prints the tire volume to the terminal window, 
+# the program should ask the user if she wants to buy tires with the dimensions that she entered. 
+# If the user answers “yes”, the program should ask for her phone number and store her phone number in the volumes.txt file.
+
+#ENhancement #2: If error occurs, the program should print an error message and ask the user to enter the value again.
+# I used a while loop to keep asking the user for input until valid input is provided.
+
+
+
 from datetime import datetime
 import math
 
