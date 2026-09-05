@@ -1,8 +1,6 @@
 from datetime import datetime
 import math
 
-
-
 print("Welcome to the tire volume calculator!")
 
 while True:
