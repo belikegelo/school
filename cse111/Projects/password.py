@@ -29,7 +29,7 @@ def main():
         password = input("Enter a password to test (q to quit): ")
 
         if password == "q" or password == "Q":
-                break
+            break
 
         print(f"You entered: {password}")
 
