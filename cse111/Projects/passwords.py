@@ -1,3 +1,11 @@
+
+# Enhanced features:
+# - I did comments in every function to be more organized
+# - try and except are used to handle missing files safely.
+# - Case-sensitive and insensitive for checking .txt
+
+
+
 LOWER = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
          "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 
@@ -11,18 +19,94 @@ SPECIAL = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_",
            ".", "<", ">", "?", "/", "\\", "`", "~"]
 
 def word_in_file(word, filename, case_sensitive=False):
-    pass
+    """
+    Return True if the word is found in the file. Then if
+    case_sensitive is False, compare using lowercase.
+    """
+    try:
+        target = word if case_sensitive else word.lower()
+
+        with open(filename, "r", encoding="utf-8") as file:
+            for line in file:
+                line = line.strip()
+
+                # blank line
+                if line == "":
+                    continue
+
+                if not case_sensitive:
+                    line = line.lower()
+
+                if line == target:
+                    return True
+
+        return False
+
+    except FileNotFoundError:
+        return False
+
 
 def word_has_character(word, character_list):
-    pass
+    """
+    Return True if the word contains at least one character
+    from the character_list.
+    """
+    for character in word:
+        if character in character_list:
+            return True
+
+    return False
 
 def word_complexity(word):
-    pass
+    """
+    Return a complexity score from 0 to 4.
+    1 point for lowercase, uppercase, digits, and special characters.
+    """
+    complexity = 0
+
+    if word_has_character(word, LOWER):
+        complexity += 1
+
+    if word_has_character(word, UPPER):
+        complexity += 1
+
+    if word_has_character(word, DIGITS):
+        complexity += 1
+
+    if word_has_character(word, SPECIAL):
+        complexity += 1
+
+    return complexity
 
 
 def password_strength(password, min_length=10, strong_length=16):
-    pass
+    """
+    Return password strength from 0 to 5.
+    """
 
+    # Check wordlist, case insensitive
+    if word_in_file(password, "wordlist.txt", case_sensitive=False):
+        print("Password was found in the word list.")
+        return 0
+
+    # Check toppasswords, case sensitive
+    if word_in_file(password, "toppasswords.txt", case_sensitive=True):
+        print("Password was found in the top password list.")
+        return 0
+
+    # Check if too short
+    if len(password) < min_length:
+        print("Password is too short.")
+        return 1
+
+    # Check if long enough 
+    if len(password) >= strong_length:
+        print("Password is long enough for a strong password.")
+        return 5
+
+    # Otherwise, score based on character complexity
+    complexity = word_complexity(password)
+    return 1 + complexity
 
 def main():
     while True:
@@ -31,7 +115,9 @@ def main():
         if password == "q" or password == "Q":
             break
 
-        print(f"You entered: {password}")
+        strength = password_strength(password)
+        print(f"Password strength: {strength}")
 
 
-main()    
+if __name__ == "__main__":
+    main()
