@@ -86,22 +86,22 @@ def password_strength(password, min_length=10, strong_length=16):
 
     # Check wordlist, case insensitive
     if word_in_file(password, "wordlist.txt", case_sensitive=False):
-        print("Password was found in the word list.")
+        print("Password is a dictionary word and is not secure.")
         return 0
 
     # Check toppasswords, case sensitive
     if word_in_file(password, "toppasswords.txt", case_sensitive=True):
-        print("Password was found in the top password list.")
+        print("Password is a commonly used password and is not secure.")
         return 0
 
     # Check if too short
     if len(password) < min_length:
-        print("Password is too short.")
+        print("Password is too short and is not secure.")
         return 1
 
     # Check if long enough 
     if len(password) >= strong_length:
-        print("Password is long enough for a strong password.")
+        print("Password is long, length trumps complexity this is a good password")
         return 5
 
     # Otherwise, score based on character complexity
