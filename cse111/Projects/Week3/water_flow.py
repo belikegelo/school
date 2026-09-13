@@ -1,3 +1,10 @@
+#More features
+# I include numbers for Earth’s acceleration of gravity, the density of water, and the dynamic viscosity of water.
+# Then use the constant names in place of the numbers inside your functions.
+# I add the comments for my work
+
+
+
 PVC_SCHED80_INNER_DIAMETER = 0.28687 # (meters)  11.294 inches
 PVC_SCHED80_FRICTION_FACTOR = 0.013  # (unitless)
 SUPPLY_VELOCITY = 1.65               # (meters / second)
@@ -33,6 +40,9 @@ def main():
     loss = pressure_loss_from_pipe(diameter, length2, friction, velocity)
     pressure += loss
     print(f"Pressure at house: {pressure:.1f} kilopascals")
+    #Convert kpa to psi
+    psi = kpa_to_psi(pressure)
+    print(f"Pressure at house: {psi:.1f} psi")
 
 def water_column_height(tower_height, tank_height):
     return tower_height + 3 * tank_height / 4
@@ -60,6 +70,10 @@ def pressure_loss_from_pipe_reduction(larger_diameter, fluid_velocity, reynolds_
     # Edited from +1 to -1
     k=(.1 + 50 / reynolds_number) * ((larger_diameter / smaller_diameter) ** 4 - 1)
     return -k * WATER_DENSITY * fluid_velocity ** 2 / 2000
+
+def kpa_to_psi(kpa):
+    #Convert to psi
+    return kpa * 0.1450377377
 
 if __name__ == "__main__":
     main()
