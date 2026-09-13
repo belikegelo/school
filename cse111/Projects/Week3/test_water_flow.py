@@ -1,4 +1,5 @@
-from pytest import approx, water_column_height , pressure_gain_from_water_height , pressure_loss_from_pipe 
+from water_flow import water_column_height , pressure_gain_from_water_height , pressure_loss_from_pipe 
+from pytest import approx 
 import pytest
 
 
