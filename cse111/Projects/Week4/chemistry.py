@@ -1,7 +1,22 @@
+from formula import parse_formula
 
 def main():
     periodic_table = make_periodic_table()
-    print(periodic_table)
+
+    formula = input("Enter the chemical formula: ")
+    sample_mass = float(input("Enter the sample mass in grams: "))
+
+    symbol_quantity_list = parse_formula(formula, periodic_table)
+
+    molar_mass = compute_molar_mass(
+        symbol_quantity_list,
+        periodic_table
+    )
+
+    number_of_moles = sample_mass / molar_mass
+
+    print(f"Molar mass: {molar_mass} g/mol")
+    print(f"Number of moles: {number_of_moles} mol")
 
 
 def make_periodic_table():
@@ -106,7 +121,17 @@ def make_periodic_table():
     return periodic_table_dict
 
 def compute_molar_mass(symbol_quantity_list, periodic_table_dict):
-    pass
+    molar_mass = 0
+    for symbol_quantity in symbol_quantity_list:
+        symbol = symbol_quantity[0]
+        quantity = symbol_quantity[1]
+
+        atomic_mass = periodic_table_dict[symbol][1]
+
+        molar_mass += atomic_mass * quantity
+
+    return molar_mass
+
 
 
 if __name__ == "__main__":
