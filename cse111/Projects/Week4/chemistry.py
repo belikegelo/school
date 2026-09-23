@@ -1,22 +1,49 @@
+# Enhancements:
+# 1. Displays a summary of each element and the number of atoms
+# 2. Displays the calculation 
+# 3. Allows the user to calculate until Q or q is entered
+
+
 from formula import parse_formula
 
-def main():
-    formula = input("Enter the chemical formula: ")
-    sample_mass = float(input("Enter the sample mass in grams: "))
 
+def main():
+    print("WELCOME TO MY MOLAR MASS CALCULATOR 😎")
     periodic_table = make_periodic_table()
 
-    symbol_quantity_list = parse_formula(formula, periodic_table)
+    while True:
+        formula = input("\nEnter the chemical formula (Q to quit): ")
 
-    molar_mass = compute_molar_mass(
-        symbol_quantity_list,
-        periodic_table
-    )
+        if formula.lower() == "q":
+            print("Thank you for using my Molar Mass Calculator! ✌️")
+            break
 
-    number_of_moles = sample_mass / molar_mass
+        sample_mass = float(input("Enter the sample mass in grams: "))
 
-    print(f"Molar mass: {molar_mass} g/mol")
-    print(f"Number of moles: {number_of_moles} mol")
+        symbol_quantity_list = parse_formula(
+            formula,
+            periodic_table
+        )
+
+        print("Compound Summary:")
+        print()
+
+        for symbol_quantity in symbol_quantity_list:
+            symbol = symbol_quantity[0]
+            quantity = symbol_quantity[1]
+            element_name = periodic_table[symbol][0]
+
+            print(f"{element_name} ({symbol}): {quantity} atoms")
+
+        molar_mass = compute_molar_mass(
+            symbol_quantity_list,
+            periodic_table
+        )
+
+        number_of_moles = sample_mass / molar_mass
+
+        print(f"\nMolar mass: {molar_mass} g/mol")
+        print(f"Number of moles: {number_of_moles} mol")
 
 
 def make_periodic_table():
@@ -120,6 +147,7 @@ def make_periodic_table():
 
     return periodic_table_dict
 
+
 def compute_molar_mass(symbol_quantity_list, periodic_table_dict):
     SYMBOL_INDEX = 0
     QUANTITY_INDEX = 1
@@ -127,15 +155,22 @@ def compute_molar_mass(symbol_quantity_list, periodic_table_dict):
 
     molar_mass = 0
 
+    print("\nMolar Mass Calculation:")
+
     for symbol_quantity in symbol_quantity_list:
         symbol = symbol_quantity[SYMBOL_INDEX]
         quantity = symbol_quantity[QUANTITY_INDEX]
 
         atomic_mass = periodic_table_dict[symbol][ATOMIC_MASS_INDEX]
 
-        molar_mass += quantity * atomic_mass
+        element_mass = quantity * atomic_mass
+
+        print(f"{quantity} {symbol} x {atomic_mass} = {element_mass}")
+
+        molar_mass += element_mass
 
     return molar_mass
+
 
 if __name__ == "__main__":
     main()
