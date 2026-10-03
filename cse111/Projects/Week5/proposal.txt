@@ -1,0 +1,52 @@
+CSE 111 Proposal for a Student Chosen Program
+
+    (This is a proposal. All proposals are written with our best
+    knowledge at the beginning of a project. As we progress from the
+    beginning to the end of a project, we gain more knowledge, and we
+    change some of our proposed ideas. This is part of completing any
+    project and is fine.  However, we still must write a proposal so
+    that our teachers or supervisors know what we intend to do. Please
+    answer each of the following questions to the best of your
+    knowledge.)
+
+1. What is the title of your program?
+-Mini Pharmacy Inventory System
+
+2. What real-world problem will your program address or help to solve?
+-The program will help a small community pharmacy keep track of available medicines and their quantities. It can be difficult to quickly check whether a medicine is still available, especially when there are different variants of the same medicine.
+
+3. What will you learn from developing this program?
+-By developing this program, I will learn how to build a practical Python program in real world scenarios that uses the programming concepts I have learned in CSE 111.
+
+4. What Python modules will your program use?
+cvs, datetime
+
+    (Some examples are: csv, datetime, functools, matplotlib, math,
+    pandas, pytest, random, requests, and tkinter.)
+
+5. List the names of functions you will need?
+
+main()
+show_menu() - displays the main program menu.
+get_product() - finds a specific product from the inventory.
+check_stock() - checks whether the requested quantity is available.
+add_to_cart() - adds a selected product and quantity to the shopping cart.
+search_medicine() -finds medicines that match a user's search and returns the matching products.
+load_inventory() -reads the inventory from the CSV file and returns the inventory data.
+save_inventory() -saves the updated inventory back to the CSV file.
+    (Remember that the most reusable functions don't get user input and
+    don't print results but instead have parameters and return a result.
+    Functions that get user input and print results are important and do
+    useful work but are not easily reusable.)
+
+    (Remember also that it's hard to test functions that get user input
+    and print results. It's easy to test functions that don't get user
+    input and don't print results but instead have parameters and return
+    a result. Therefore, you should write most of your program functions
+    to have parameters and return a result.)
+
+6. List the names of the test functions you will write.
+
+test_search_medicine()
+test_check_stock()
+test_add_to_cart()
