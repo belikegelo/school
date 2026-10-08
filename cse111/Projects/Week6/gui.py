@@ -5,6 +5,7 @@ import random
 
 def main():
     root = tk.Tk()
+    root.option_add("*Font", "Helvetica 14")
     frm_main = Frame(root)
     frm_main.master.title("Dice")
     frm_main.pack(padx=3, pady=3, fill=tk.BOTH, expand=True)
