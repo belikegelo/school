@@ -37,8 +37,18 @@ def setup_main(frm):
         return roll_text
 
     def roll_action():
-        sides = ent_sides.get()
-        count = ent_count.get()
+        try:
+            sides = ent_sides.get()
+        except ValueError:
+            lbl_roll.config(text="Must enter the valid number of sides")
+            return 
+
+        try:
+            count = ent_count.get()
+        except ValueError:
+            lbl_roll.config(text="Must enter the valid number of Dice")
+            return
+        
         lbltext= roll_dice(sides, count)
         lbl_roll.config(text=lbltext)
     btn_roll.config(command=roll_action)
