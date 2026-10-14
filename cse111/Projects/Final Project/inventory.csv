@@ -7,3 +7,43 @@ id,name,variant,price,quantity
 6,Biogesic,500mg Tablet,8.0,25
 7,Alcohol,250ml Bottle,35.0,12
 8,Vitamin C,500mg Tablet,5.0,40
+9,Cetirizine,10mg Tablet,3.5,28
+10,Loratadine,10mg Tablet,4.5,20
+11,Mefenamic Acid,500mg Capsule,5.0,25
+12,Loperamide,2mg Capsule,5.0,20
+13,Hydrite,Oral Rehydration Salts Sachet,15.0,12
+14,Kremil-S,Antacid Tablet,10.0,20
+15,Omeprazole,20mg Capsule,6.0,20
+16,Lagundi,Syrup 60ml,75.0,8
+17,Solmux,500mg Capsule,12.0,15
+18,Bioflu,Tablet,9.0,20
+19,Neozep Forte,Tablet,9.0,20
+20,Alaxan FR,Tablet,9.0,20
+21,Dolfenal,500mg Tablet,12.0,15
+22,Betadine,Antiseptic Solution 60ml,85.0,6
+23,Povidone-Iodine,10% Solution 15ml,35.0,8
+24,Gauze Pad,4x4 10pcs,25.0,10
+25,Elastic Bandage,2in Roll,25.0,8
+26,Cotton Balls,50g Pack,25.0,10
+27,Adhesive Bandage,10pcs Pack,20.0,15
+28,Digital Thermometer,1pc,120.0,3
+29,Paracetamol,120mg/5mL Suspension 60mL,55.0,10
+30,Paracetamol,250mg/5mL Suspension 60mL,65.0,8
+31,Biogesic,120mg/5mL Syrup 60mL,75.0,10
+32,Ibuprofen,100mg/5mL Suspension 60mL,65.0,8
+33,Ibuprofen,400mg Tablet,7.0,20
+34,Cetirizine,5mg/5mL Syrup 60mL,65.0,8
+35,Loratadine,5mg/5mL Syrup 60mL,70.0,8
+36,Vitamin C,100mg Chewable Tablet,3.0,30
+37,Vitamin C,500mg with Zinc Tablet,8.0,25
+38,Alcohol,70% 60mL Bottle,15.0,15
+39,Alcohol,70% 500mL Bottle,55.0,8
+40,Povidone-Iodine,10% Solution 60mL,65.0,6
+41,Povidone-Iodine,10% Ointment 10g,45.0,6
+42,Oral Rehydration Salts,Orange Flavor Sachet,15.0,12
+43,Oral Rehydration Salts,Plain Sachet,12.0,12
+44,Ambroxol,30mg Tablet,5.0,20
+45,Ambroxol,15mg/5mL Syrup 60mL,65.0,8
+46,Multivitamins + Lysine,Syrup 120mL,95.0,6
+47,Zinc Sulfate,20mg Dispersible Tablet,4.0,30
+48,Saline Nasal Drops,0.9% Solution 10mL,45.0,8

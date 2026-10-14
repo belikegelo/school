@@ -287,7 +287,8 @@ def main():
     if inventory is None:
         return
 
-    print("Welcome to the Inventory Management System")
+    print()
+    print("Welcome to GELO's Inventory Management System")
 
     while True:
         show_menu()
