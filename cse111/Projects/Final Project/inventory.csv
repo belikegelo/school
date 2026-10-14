@@ -1,18 +1,18 @@
 id,name,variant,price,quantity
-1,Paracetamol,500mg Tablet,2.5,50
+1,Paracetamol,500mg Tablet,2.5,48
 2,Paracetamol,Kids Syrup 60ml,85.0,9
 3,Paracetamol,250mg Tablet,2.0,20
 4,Paracetamol,Branded 500mg,8.0,15
 5,Ibuprofen,200mg Tablet,4.5,30
 6,Biogesic,500mg Tablet,8.0,25
-7,Alcohol,250ml Bottle,35.0,12
+7,Alcohol,250ml Bottle,35.0,11
 8,Vitamin C,500mg Tablet,5.0,40
-9,Cetirizine,10mg Tablet,3.5,28
+9,Cetirizine,10mg Tablet,3.5,23
 10,Loratadine,10mg Tablet,4.5,20
 11,Mefenamic Acid,500mg Capsule,5.0,25
 12,Loperamide,2mg Capsule,5.0,20
-13,Hydrite,Oral Rehydration Salts Sachet,15.0,12
-14,Kremil-S,Antacid Tablet,10.0,20
+13,Hydrite,Oral Rehydration Salts Sachet,15.0,11
+14,Kremil-S,Antacid Tablet,10.0,19
 15,Omeprazole,20mg Capsule,6.0,20
 16,Lagundi,Syrup 60ml,75.0,8
 17,Solmux,500mg Capsule,12.0,15
@@ -34,7 +34,7 @@ id,name,variant,price,quantity
 33,Ibuprofen,400mg Tablet,7.0,20
 34,Cetirizine,5mg/5mL Syrup 60mL,65.0,8
 35,Loratadine,5mg/5mL Syrup 60mL,70.0,8
-36,Vitamin C,100mg Chewable Tablet,3.0,30
+36,Vitamin C,100mg Chewable Tablet,3.0,29
 37,Vitamin C,500mg with Zinc Tablet,8.0,25
 38,Alcohol,70% 60mL Bottle,15.0,15
 39,Alcohol,70% 500mL Bottle,55.0,8

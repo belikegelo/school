@@ -108,9 +108,9 @@ def print_receipt(cart):
     current_time = datetime.now()
 
     print()
-    print("=" * 40)
+    print("*" * 40)
     print("              RECEIPT")
-    print("=" * 40)
+    print("*" * 40)
     print(current_time.strftime("%B %d, %Y - %I:%M %p"))
     print("-" * 40)
 
@@ -271,13 +271,13 @@ def buy_medicine(inventory):
 def show_menu():
     """Display the main menu."""
     print()
-    print("=" * 40)
+    print("*" * 40)
     print("       MINI PHARMACY SYSTEM")
-    print("=" * 40)
+    print("*" * 40)
     print("1. Search Medicine")
     print("2. Buy Medicine")
     print("3. Exit")
-    print("=" * 40)
+    print("*" * 40)
 
 
 def main():
@@ -302,7 +302,8 @@ def main():
             buy_medicine(inventory)
 
         elif choice == "3":
-            print("\nThank you for using the system!")
+            print()
+            print("Thank you for using the system! ^_^")
             break
 
         else:
