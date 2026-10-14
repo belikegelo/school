@@ -1,24 +1,29 @@
 import csv
-import datetime
+from datetime import datetime
 
 
 def load_inventory():
-    """Read the inventory from the CSV file and return it as a list."""
+    """Read the inventory from the CSV file."""
     inventory = []
 
-    with open("inventory.csv", "r", newline="", encoding="utf-8") as file:
-        reader = csv.DictReader(file)
+    try:
+        with open("inventory.csv", "r", newline="", encoding="utf-8") as file:
+            reader = csv.DictReader(file)
 
-        for row in reader:
-            row["price"] = float(row["price"])
-            row["quantity"] = int(row["quantity"])
-            inventory.append(row)
+            for row in reader:
+                row["price"] = float(row["price"])
+                row["quantity"] = int(row["quantity"])
+                inventory.append(row)
 
-    return inventory
+        return inventory
+
+    except FileNotFoundError:
+        print("Error: inventory.csv file not found.")
+        return None
 
 
 def save_inventory(inventory):
-    """Save the current inventory back to the CSV file."""
+    """Save the updated inventory to the CSV file."""
     with open("inventory.csv", "w", newline="", encoding="utf-8") as file:
         fieldnames = ["id", "name", "variant", "price", "quantity"]
         writer = csv.DictWriter(file, fieldnames=fieldnames)
@@ -30,7 +35,7 @@ def save_inventory(inventory):
 
 
 def search_medicine(inventory, search_term):
-    """Return products whose name or variant matches the search term."""
+    """Search for a medicine by its name or variant."""
     matches = []
     search_term = search_term.lower()
 
@@ -45,7 +50,7 @@ def search_medicine(inventory, search_term):
 
 
 def get_product(inventory, product_id):
-    """Return a product with the given ID."""
+    """Find a product using its ID."""
     for product in inventory:
         if product["id"] == product_id:
             return product
@@ -54,12 +59,15 @@ def get_product(inventory, product_id):
 
 
 def check_stock(product, quantity):
-    """Return True if the requested quantity is available."""
-    return quantity > 0 and quantity <= product["quantity"]
+    """Check if the requested quantity is available."""
+    if quantity > 0 and quantity <= product["quantity"]:
+        return True
+
+    return False
 
 
 def add_to_cart(cart, product, quantity):
-    """Add a product and quantity to the cart."""
+    """Add the selected medicine to the cart."""
     cart_item = {
         "name": product["name"],
         "variant": product["variant"],
@@ -71,39 +79,39 @@ def add_to_cart(cart, product, quantity):
 
 
 def calculate_item_total(price, quantity):
-    """Calculate the total price for one item."""
-    return price * quantity
+    """Calculate the total price of one medicine."""
+    total = price * quantity
+    return total
 
 
 def calculate_cart_total(cart):
-    """Calculate the total price of everything in the cart."""
+    """Calculate the total price of all medicines in the cart."""
     total = 0
 
     for item in cart:
-        total += calculate_item_total(
+        item_total = calculate_item_total(
             item["price"],
             item["quantity"]
         )
+        total += item_total
 
     return total
 
 
 def update_stock(product, quantity):
-    """Reduce the product stock after a purchase."""
+    """Reduce the stock after buying a medicine."""
     product["quantity"] -= quantity
 
 
 def print_receipt(cart):
-    """Print the receipt for the purchase."""
-    current_time = datetime.datetime.now()
+    """Print the receipt after purchasing medicines."""
+    current_time = datetime.now()
 
-    print("\n")
+    print()
     print("=" * 40)
     print("              RECEIPT")
     print("=" * 40)
-    print(
-        current_time.strftime("%B %d, %Y - %I:%M %p")
-    )
+    print(current_time.strftime("%B %d, %Y - %I:%M %p"))
     print("-" * 40)
 
     for item in cart:
@@ -112,10 +120,7 @@ def print_receipt(cart):
             item["quantity"]
         )
 
-        print(
-            f'{item["quantity"]} x '
-            f'{item["name"]} - {item["variant"]}'
-        )
+        print(f'{item["quantity"]} x {item["name"]} - {item["variant"]}')
         print(f'   ₱{item["price"]:.2f} each = ₱{item_total:.2f}')
 
     total = calculate_cart_total(cart)
@@ -128,8 +133,9 @@ def print_receipt(cart):
 
 
 def show_search_results(matches):
-    """Display search results."""
-    print("\nAvailable Medicines:")
+    """Display the search results and available stock."""
+    print()
+    print("Available Medicines:")
     print("-" * 60)
 
     for index, product in enumerate(matches, start=1):
@@ -139,18 +145,15 @@ def show_search_results(matches):
             stock_text = "OUT OF STOCK"
 
         print(
-            f"{index}. "
-            f"{product['name']} - "
-            f"{product['variant']} | "
-            f"₱{product['price']:.2f} | "
-            f"{stock_text}"
+            f"{index}. {product['name']} - {product['variant']} | "
+            f"₱{product['price']:.2f} | {stock_text}"
         )
 
     print("-" * 60)
 
 
 def search_menu(inventory):
-    """Search for medicine and display the available stock."""
+    """Allow the user to search for a medicine."""
     search_term = input("\nEnter medicine to search: ").strip()
 
     if search_term == "":
@@ -167,7 +170,7 @@ def search_menu(inventory):
 
 
 def buy_medicine(inventory):
-    """Handle the buying process."""
+    """Handle the process of buying medicines."""
     cart = []
 
     while True:
@@ -185,6 +188,7 @@ def buy_medicine(inventory):
 
         show_search_results(matches)
 
+        # Ask the user to choose a medicine
         while True:
             try:
                 choice = int(input("Choose a medicine number: "))
@@ -204,6 +208,7 @@ def buy_medicine(inventory):
             print("Sorry, this product is out of stock.")
             continue
 
+        # Ask for the quantity
         while True:
             try:
                 quantity = int(
@@ -227,6 +232,7 @@ def buy_medicine(inventory):
             except ValueError:
                 print("Please enter a whole number.")
 
+        # Add the medicine to the cart and update stock
         add_to_cart(cart, selected_product, quantity)
         update_stock(selected_product, quantity)
 
@@ -237,12 +243,12 @@ def buy_medicine(inventory):
 
         print("\nAdded to cart:")
         print(
-            f'{quantity} x '
-            f'{selected_product["name"]} - '
+            f'{quantity} x {selected_product["name"]} - '
             f'{selected_product["variant"]}'
         )
         print(f"Item total: ₱{item_total:.2f}")
 
+        # Ask if the user wants to buy another medicine
         while True:
             print("\nBuy another medicine?")
             print("1. Yes")
@@ -253,17 +259,18 @@ def buy_medicine(inventory):
             if again == "1":
                 break
 
-            if again == "2":
+            elif again == "2":
                 print_receipt(cart)
                 save_inventory(inventory)
                 return
 
-            print("Please choose 1 or 2.")
+            else:
+                print("Please choose 1 or 2.")
 
 
 def show_menu():
     """Display the main menu."""
-    print("\n")
+    print()
     print("=" * 40)
     print("       MINI PHARMACY SYSTEM")
     print("=" * 40)
@@ -276,6 +283,9 @@ def show_menu():
 def main():
     """Run the pharmacy inventory system."""
     inventory = load_inventory()
+
+    if inventory is None:
+        return
 
     print("Welcome to the Inventory Management System")
 
