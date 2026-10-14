@@ -33,13 +33,13 @@ link to video walkthrough if needed.
 Student Project Report
 Date        Time Spent (hours)   Description of Work
 2026-10-01          0.5           Watched a video and researched ideas for a simple Python inventory management project.
-2026-10-02          1.5           Finalizing project ideas and chose a mini pharmacy inventory system. Listed its main goals and possible features. Experimenting                                  
+2026-10-02          0.5           Finalizing project ideas and chose a mini pharmacy inventory system. Listed its main goals and possible features. Experimenting                                  
 2026-10-03          0.5           Planned the program's basic workflow, including searching for medicine and buying products.
 2026-10-04          0.5           Organized the project idea and finished and submitted the project proposal at around 5:30 AM.
 2026-10-07          0.5           Watched videos and reviewed Python concepts that could help with the project.
 2026-10-08          1.0           Set up the program structure, planned function names, and experiment building its small code
-2026-10-09          2.0           Created the inventory.csv data file using medicine names, variants, prices, and quantities based on products available in our mini pharmacy
-2026-10-10          2.0           Implemented the main program functions for loading inventory, searching for medicine, checking stock, adding items to a cart, calculating totals, updating stock, and displaying the menu. Worked late into the night, until around 3:00 AM on October 11, and got the main program working.
+2026-10-09          2.0           Created the inventory.csv data file using medicine names, variants, prices, and quantities based on products available in our mini pharmacy - I did survey
+2026-10-10          3.0           Wrote the main program functions for loading inventory, searching for medicine, checking stock, adding items to a cart, calculating totals, updating stock, and displaying the menu. Worked late into the night, until around 3:00 AM on October 11, and got the main program working.
 2026-10-13          2.0           Wrote test_pharmacy.py and created five tests for medicine searching, stock checking, adding to the cart, calculating an item total, and calculating the cart total.
 2026-10-14          2.0           Investigated errors, and debugged problems with the program and test functions. Also add some feature for error handling, some filtering and debugging
 2026-10-15          2.0           Refined the medicine search filtering, reviewed the program, and do final checks to confirm that the main features and tests worked as expected.
